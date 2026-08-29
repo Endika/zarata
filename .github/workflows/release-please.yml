@@ -20,7 +20,10 @@ jobs:
       - id: release
         uses: googleapis/release-please-action@v5
         with:
-          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          # A PAT makes the release pull request yours, so CI runs on it and auto-merge
+          # can proceed. With the default token the pull request is authored by the bot,
+          # GitHub fires no workflows for it, and the required checks wait for ever.
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
