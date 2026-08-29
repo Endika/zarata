@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/Endika/zarata/compare/v0.2.0...v0.2.1) (2026-08-29)
+
+
+### Bug Fixes
+
+* give the app a real icon on every home screen ([e18b127](https://github.com/Endika/zarata/commit/e18b12748d4b2098c7572f3ec43731899d82b6bf))
+
 ## [0.2.0](https://github.com/Endika/zarata/compare/v0.1.0...v0.2.0) (2026-08-29)
 
 
