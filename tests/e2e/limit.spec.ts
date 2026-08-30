@@ -8,15 +8,15 @@ test('the limit is dragged onto the dial and remembered', async ({ page }) => {
   await expect(page.locator(limit)).toHaveText('85');
 
   const box = (await page.locator(dial).boundingBox())!;
-  // The quiet end of the arc, on the left.
-  await page.mouse.move(box.x + box.width * 0.06, box.y + box.height * 0.86);
+  // Below the left half, which the dial reads as the quiet extreme whatever the scale.
+  await page.mouse.move(box.x + box.width * 0.1, box.y + box.height * 0.9);
   await page.mouse.down();
   await page.mouse.up();
 
-  await expect(page.locator(limit)).toHaveText('30');
+  await expect(page.locator(limit)).toHaveText('0');
 
   await page.reload();
-  await expect(page.locator(limit)).toHaveText('30');
+  await expect(page.locator(limit)).toHaveText('0');
 });
 
 test('it says what it is and what it is not', async ({ page }) => {

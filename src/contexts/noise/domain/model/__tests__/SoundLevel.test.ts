@@ -43,7 +43,8 @@ describe('SoundLevel', () => {
   it('places itself on the dial as a fraction', () => {
     expect(SoundLevel.of(QUIETEST_DB).fraction).toBe(0);
     expect(SoundLevel.of(LOUDEST_DB).fraction).toBe(1);
-    expect(SoundLevel.of(70).fraction).toBeCloseTo(0.5, 1);
+    const halfway = (QUIETEST_DB + LOUDEST_DB) / 2;
+    expect(SoundLevel.of(halfway).fraction).toBeCloseTo(0.5, 1);
   });
 
   it('keeps the louder of two', () => {
