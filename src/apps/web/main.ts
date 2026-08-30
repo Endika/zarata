@@ -25,7 +25,8 @@ app.innerHTML = `
     <div class="trail-facts"><span data-elapsed>0:00</span><span data-peak>1 min peak --</span></div>
   </div>
   <button type="button" data-listening="false">Start listening</button>
-  <p class="note">Approximate. A phone is not a sound level meter. Nothing is recorded.</p>`;
+  <p class="note">Approximate. A phone is not a sound level meter. Nothing is recorded.</p>
+  <p class="version">v${__APP_VERSION__}</p>`;
 
 const gauge = gaugeElements(app);
 const trail = trailElements(app);

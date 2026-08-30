@@ -23,5 +23,6 @@ test('it says what it is and what it is not', async ({ page }) => {
   await page.goto('/');
 
   await expect(page.locator('.note')).toContainText('not a sound level meter');
+  await expect(page.locator('.version')).toHaveText(/^v\d+\.\d+\.\d+$/);
   await expect(page.getByRole('button')).toHaveText('Start listening');
 });

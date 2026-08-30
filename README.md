@@ -18,6 +18,8 @@ _Zarata_ is Basque for noise.
   falls off the left, so it goes at the same pace after an hour as after ten seconds. Each
   column keeps the peak of its slice rather than the average — a bang matters more.
 - **The screen stays on** while it is listening, and lets go when you stop.
+- **The version is at the bottom.** An installed PWA can serve yesterday's build from its
+  cache, and this says which one you are looking at.
 
 Nothing is recorded, nothing is uploaded, and there is no account. The sound never leaves the
 phone.
