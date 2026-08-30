@@ -1,3 +1,4 @@
+import { DEFAULT_COLUMNS } from '@contexts/noise/domain/model/RecentTrail';
 import {
   LOUDEST_DB,
   QUIETEST_DB,
@@ -5,6 +6,7 @@ import {
 
 const WIDTH = 300;
 const HEIGHT = 90;
+const STEP = WIDTH / (DEFAULT_COLUMNS - 1);
 
 const y = (db: number): number => {
   const fraction = (db - QUIETEST_DB) / (LOUDEST_DB - QUIETEST_DB);
@@ -13,7 +15,7 @@ const y = (db: number): number => {
 
 export const trailMarkup = (): string => `
   <svg class="trail" viewBox="0 0 ${WIDTH} ${HEIGHT}" preserveAspectRatio="none"
-       role="img" aria-label="This session">
+       role="img" aria-label="The last minute">
     <line class="trail-limit" x1="0" x2="${WIDTH}" y1="0" y2="0" />
     <polyline class="trail-line" points="" />
   </svg>`;
@@ -28,16 +30,22 @@ export const trailElements = (root: ParentNode): TrailElements => ({
   limit: root.querySelector('.trail-limit') as SVGLineElement,
 });
 
-/** The session so far, stretched across the full width however long it has run. */
+/**
+ * The last minute, with now on the right.
+ *
+ * Every column is the same width, so the line enters at the right edge, grows leftwards
+ * until it fills the panel and then scrolls. Stretching it to the full width instead would
+ * mean a line that changes shape without the noise changing at all.
+ */
 export const drawTrail = (
   elements: TrailElements,
   points: readonly number[],
   limitDb: number,
 ): void => {
-  const step = points.length > 1 ? WIDTH / (points.length - 1) : WIDTH;
+  const newest = points.length - 1;
   elements.line.setAttribute(
     'points',
-    points.map((db, i) => `${i * step},${y(db)}`).join(' '),
+    points.map((db, i) => `${WIDTH - (newest - i) * STEP},${y(db)}`).join(' '),
   );
   const limitY = String(y(limitDb));
   elements.limit.setAttribute('y1', limitY);

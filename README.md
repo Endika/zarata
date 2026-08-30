@@ -10,13 +10,13 @@ _Zarata_ is Basque for noise.
 
 ## What it does
 
-- **One screen.** A semicircular meter, the level in the middle, the session below.
+- **One screen.** A semicircular meter, the level in the middle, the last minute below.
 - **Drag the limit.** Put the red mark anywhere on the dial with your thumb. It is remembered.
 - **It beeps when crossed** — and stops when the noise drops back, without chattering at the
   edge.
-- **The whole session in one line.** From the moment you press start until you press stop, no
-  scrolling and no reset. As the session grows the line compresses itself, keeping the peak of
-  every stretch rather than the average.
+- **The last minute, always moving.** The line enters on the right and the oldest column
+  falls off the left, so it goes at the same pace after an hour as after ten seconds. Each
+  column keeps the peak of its slice rather than the average — a bang matters more.
 - **The screen stays on** while it is listening, and lets go when you stop.
 
 Nothing is recorded, nothing is uploaded, and there is no account. The sound never leaves the

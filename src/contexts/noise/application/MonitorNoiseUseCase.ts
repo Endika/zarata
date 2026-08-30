@@ -1,5 +1,5 @@
 import { Alarm } from '../domain/model/Alarm';
-import { SessionTrail } from '../domain/model/SessionTrail';
+import { RecentTrail } from '../domain/model/RecentTrail';
 import { SoundLevel } from '../domain/model/SoundLevel';
 import { Threshold } from '../domain/model/Threshold';
 import type {
@@ -19,7 +19,7 @@ const DEFAULT_THRESHOLD_DB = 85;
 
 /** Listening: the microphone drives it, and everything else follows one frame at a time. */
 export class MonitorNoiseUseCase implements MonitorNoisePort {
-  private trail = new SessionTrail();
+  private trail = new RecentTrail();
   private alarm = Alarm.silent();
   private limit: Threshold;
   private listening = false;
@@ -56,7 +56,7 @@ export class MonitorNoiseUseCase implements MonitorNoisePort {
 
   async start(): Promise<void> {
     if (this.listening) return;
-    this.trail = new SessionTrail();
+    this.trail = new RecentTrail();
     this.alarm = Alarm.silent();
     this.listening = true;
     await this.microphone.listen((frame) => {
