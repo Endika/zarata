@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/Endika/zarata/compare/v0.3.0...v0.4.0) (2026-08-30)
+
+
+### Features
+
+* show the build version at the bottom of the screen ([5e9f1dd](https://github.com/Endika/zarata/commit/5e9f1dd926745745bf95019e79184dac13af4f97))
+
 ## [0.3.0](https://github.com/Endika/zarata/compare/v0.2.1...v0.3.0) (2026-08-30)
 
 
