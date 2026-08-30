@@ -22,7 +22,7 @@ app.innerHTML = `
   <p class="limit-label">Limit <b data-limit>--</b> dB &middot; drag it on the dial</p>
   <div class="panel">
     ${trailMarkup()}
-    <div class="trail-facts"><span data-elapsed>0:00</span><span data-peak>peak --</span></div>
+    <div class="trail-facts"><span data-elapsed>0:00</span><span data-peak>1 min peak --</span></div>
   </div>
   <button type="button" data-listening="false">Start listening</button>
   <p class="note">Approximate. A phone is not a sound level meter. Nothing is recorded.</p>`;
@@ -49,7 +49,7 @@ const paint = (reading: Reading): void => {
   gauge.reading.textContent = String(Math.round(reading.level.db));
   limitLabel.textContent = String(reading.threshold.db);
   drawTrail(trail, reading.trail, reading.threshold.db);
-  peakLabel.textContent = `peak ${Math.round(reading.peak.db)}`;
+  peakLabel.textContent = `1 min peak ${Math.round(reading.peak.db)}`;
   document.body.dataset['alarming'] = String(reading.alarming);
 };
 
