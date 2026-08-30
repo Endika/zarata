@@ -141,6 +141,14 @@ button[data-listening='true'] {
   text-align: center;
 }
 
+/* Which build you are actually looking at: a PWA can serve yesterday's from its cache. */
+.version {
+  color: var(--dim);
+  font-size: 0.7rem;
+  text-align: center;
+  opacity: 0.6;
+}
+
 body[data-alarming='true'] {
   background: #4c0519;
 }
