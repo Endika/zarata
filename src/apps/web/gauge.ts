@@ -1,3 +1,8 @@
+import {
+  LOUDEST_DB,
+  QUIETEST_DB,
+} from '@contexts/noise/domain/model/SoundLevel';
+
 const CX = 150;
 const CY = 150;
 const R = 118;
@@ -36,8 +41,8 @@ export const gaugeMarkup = (): string => {
       <line class="gauge-limit" x1="0" y1="0" x2="0" y2="0" />
       <text class="gauge-reading" x="${CX}" y="${CY - 34}">–</text>
       <text class="gauge-unit" x="${CX}" y="${CY - 6}">dB approx.</text>
-      <text class="gauge-min" x="14" y="168">30</text>
-      <text class="gauge-max" x="286" y="168">110</text>
+      <text class="gauge-min" x="14" y="168">${QUIETEST_DB}</text>
+      <text class="gauge-max" x="286" y="168">${LOUDEST_DB}</text>
     </svg>`;
 };
 

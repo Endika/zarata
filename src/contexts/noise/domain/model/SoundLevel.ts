@@ -1,7 +1,7 @@
 import { ValueObject } from '@shared-kernel/domain/ValueObject';
 
-/** The quietest and loudest the dial shows: a library and a rock concert. */
-export const QUIETEST_DB = 30;
+/** The ends of the dial: nothing at all, and a rock concert. */
+export const QUIETEST_DB = 0;
 export const LOUDEST_DB = 110;
 
 /**
