@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.4](https://github.com/Endika/zarata/compare/v0.4.3...v0.4.4) (2026-09-05)
+
+
+### Chores
+
+* run the four CI gates in pre-commit ([a55e05a](https://github.com/Endika/zarata/commit/a55e05ab44be8d27d52099da74867e8b1fbff846))
+
 ## [0.4.3](https://github.com/Endika/zarata/compare/v0.4.2...v0.4.3) (2026-09-05)
 
 
