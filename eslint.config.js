@@ -19,7 +19,6 @@ export default [
       'playwright-report/**',
       'test-results/**',
       '.husky/**',
-      'src/sw.ts',
     ],
   },
   {
