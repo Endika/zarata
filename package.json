@@ -1,6 +1,6 @@
 {
   "name": "zarata",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "private": true,
   "type": "module",
   "description": "A sound level meter for your phone: watch the noise, set a limit, get a beep when it is crossed.",
