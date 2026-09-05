@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.3](https://github.com/Endika/zarata/compare/v0.4.2...v0.4.3) (2026-09-05)
+
+
+### Chores
+
+* drop the stale sw.ts lint exclusion ([ed5a1f9](https://github.com/Endika/zarata/commit/ed5a1f94db126f0039d758f886e35634366ec13f))
+
 ## [0.4.2](https://github.com/Endika/zarata/compare/v0.4.1...v0.4.2) (2026-09-05)
 
 
