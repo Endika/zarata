@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1](https://github.com/Endika/zarata/compare/v0.4.0...v0.4.1) (2026-09-05)
+
+
+### Chores
+
+* **deps-dev:** bump the minor-and-patch group with 4 updates ([da8af01](https://github.com/Endika/zarata/commit/da8af01beae9354c91ba2c96cf68a8e03494eda6))
+* normalize CI gate names and order ([fd35bcb](https://github.com/Endika/zarata/commit/fd35bcb6ee0fe953596a59e3f6d106c5b205adaa))
+
 ## [0.4.0](https://github.com/Endika/zarata/compare/v0.3.0...v0.4.0) (2026-08-30)
 
 
