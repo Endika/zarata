@@ -39,7 +39,7 @@ they exist to make you sound good on a call, and they ruin a measurement.
 ```
 npm install
 npm run dev
-npm test
+npm run test:run
 npm run build
 ```
 
