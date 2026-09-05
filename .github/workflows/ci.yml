@@ -42,3 +42,13 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
+
+  all-green:
+    name: all-green
+    needs: [quality, test, build]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: every required job must have succeeded
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') || contains(needs.*.result, 'skipped')
+        run: exit 1
