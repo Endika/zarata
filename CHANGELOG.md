@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/Endika/zarata/compare/v0.4.1...v0.4.2) (2026-09-05)
+
+
+### Chores
+
+* fail the lint gate on warnings ([8243730](https://github.com/Endika/zarata/commit/82437307c8c6a9178b62cccc30d3c64e2b9fd6f1))
+
 ## [0.4.1](https://github.com/Endika/zarata/compare/v0.4.0...v0.4.1) (2026-09-05)
 
 
