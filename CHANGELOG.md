@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/Endika/zarata/compare/v0.4.4...v0.5.0) (2026-09-16)
+
+
+### Features
+
+* **ci:** block PRs that introduce high-severity dependency advisories ([9438c9a](https://github.com/Endika/zarata/commit/9438c9a58b43ff1ac16873b8ff4ab2e7d83320f3))
+
 ## [0.4.4](https://github.com/Endika/zarata/compare/v0.4.3...v0.4.4) (2026-09-05)
 
 
