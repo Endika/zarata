@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/Endika/zarata/compare/v0.5.0...v0.6.0) (2026-09-16)
+
+
+### Features
+
+* **ci:** add CodeQL static analysis ([3c12291](https://github.com/Endika/zarata/commit/3c12291d094be9d95b3fdb5e7c487441660387fb))
+
 ## [0.5.0](https://github.com/Endika/zarata/compare/v0.4.4...v0.5.0) (2026-09-16)
 
 
