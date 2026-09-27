@@ -59,9 +59,15 @@ export class MonitorNoiseUseCase implements MonitorNoisePort {
     this.trail = new RecentTrail();
     this.alarm = Alarm.silent();
     this.listening = true;
-    await this.microphone.listen((frame) => {
-      this.consume(frame);
-    });
+    try {
+      await this.microphone.listen((frame) => {
+        this.consume(frame);
+      });
+    } catch (error) {
+      this.listening = false;
+      this.microphone.stop();
+      throw error;
+    }
     await this.screen.hold();
   }
 

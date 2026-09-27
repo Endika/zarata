@@ -135,6 +135,12 @@ button[data-listening='true'] {
   color: var(--ink);
 }
 
+.problem {
+  color: var(--limit);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
 .note {
   color: var(--dim);
   font-size: 0.75rem;

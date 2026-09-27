@@ -8,8 +8,10 @@ import { MonitorNoiseUseCase } from '../MonitorNoiseUseCase';
 class FakeMicrophone {
   private onFrame: ((frame: SampleFrame) => void) | null = null;
   open = false;
+  refusal: Error | null = null;
 
   async listen(onFrame: (frame: SampleFrame) => void): Promise<void> {
+    if (this.refusal) throw this.refusal;
     this.onFrame = onFrame;
     this.open = true;
   }
@@ -165,5 +167,25 @@ describe('MonitorNoiseUseCase', () => {
 
     expect(seen).toEqual([]);
     expect(siren.sounding).toBe(false);
+  });
+
+  it('reports a refused microphone and is not left half-started', async () => {
+    microphone.refusal = new DOMException('denied', 'NotAllowedError');
+
+    await expect(monitor.start()).rejects.toThrow('denied');
+
+    expect(monitor.isListening).toBe(false);
+    expect(screen.held).toBe(false);
+  });
+
+  it('starts once the microphone is allowed after a refusal', async () => {
+    microphone.refusal = new DOMException('denied', 'NotAllowedError');
+    await monitor.start().catch(() => undefined);
+
+    microphone.refusal = null;
+    await monitor.start();
+
+    expect(monitor.isListening).toBe(true);
+    expect(microphone.open).toBe(true);
   });
 });
