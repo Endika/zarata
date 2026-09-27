@@ -14,6 +14,7 @@ import {
   gaugeMarkup,
   pointerFraction,
 } from './gauge';
+import { microphoneProblem } from './microphoneProblem';
 import { drawTrail, trailElements, trailMarkup } from './trail';
 
 const app = document.querySelector('#app') as HTMLElement;
@@ -25,6 +26,7 @@ app.innerHTML = `
     <div class="trail-facts"><span data-elapsed>0:00</span><span data-peak>1 min peak --</span></div>
   </div>
   <button type="button" data-listening="false">Start listening</button>
+  <p class="problem" role="alert" hidden></p>
   <p class="note">Approximate. A phone is not a sound level meter. Nothing is recorded.</p>
   <p class="version">v${__APP_VERSION__}</p>`;
 
@@ -34,6 +36,7 @@ const limitLabel = app.querySelector('[data-limit]') as HTMLElement;
 const elapsedLabel = app.querySelector('[data-elapsed]') as HTMLElement;
 const peakLabel = app.querySelector('[data-peak]') as HTMLElement;
 const button = app.querySelector('button') as HTMLButtonElement;
+const problem = app.querySelector('.problem') as HTMLElement;
 
 // One context for the microphone and the tone, created on the first tap: iOS will not
 // let audio begin without a gesture, and two contexts would be one more than needed.
@@ -86,12 +89,19 @@ button.addEventListener('click', () => {
     return;
   }
   void context?.resume();
-  void running.start().then(() => {
-    startedAt = performance.now();
-    button.textContent = 'Stop';
-    button.dataset['listening'] = 'true';
-    showElapsed();
-  });
+  problem.hidden = true;
+  running.start().then(
+    () => {
+      startedAt = performance.now();
+      button.textContent = 'Stop';
+      button.dataset['listening'] = 'true';
+      showElapsed();
+    },
+    (error: unknown) => {
+      problem.textContent = microphoneProblem(error);
+      problem.hidden = false;
+    },
+  );
 });
 
 const drag = (event: PointerEvent): void => {
