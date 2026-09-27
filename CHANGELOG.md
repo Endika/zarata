@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/Endika/zarata/compare/v0.6.0...v0.6.1) (2026-09-27)
+
+
+### Bug Fixes
+
+* tell the user when the microphone is denied or unavailable ([d7b18ef](https://github.com/Endika/zarata/commit/d7b18ef5626ea4ca8d7e091a7995552725aa7de3))
+
 ## [0.6.0](https://github.com/Endika/zarata/compare/v0.5.0...v0.6.0) (2026-09-16)
 
 
