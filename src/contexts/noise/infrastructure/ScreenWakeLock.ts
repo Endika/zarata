@@ -19,9 +19,10 @@ export class ScreenWakeLock implements ScreenLockPort {
     });
   }
 
-  async hold(): Promise<void> {
+  async hold(): Promise<boolean> {
     this.wanted = true;
     await this.request();
+    return this.isHeld;
   }
 
   async release(): Promise<void> {
@@ -36,7 +37,7 @@ export class ScreenWakeLock implements ScreenLockPort {
       this.sentinel = await navigator.wakeLock.request('screen');
     } catch {
       // Denied by the browser — low battery, or a policy. The meter still works; the
-      // screen will simply dim as it normally would, and saying so is the UI's job.
+      // screen will simply dim as it normally would, and hold() tells the UI so.
       this.sentinel = null;
     }
   }

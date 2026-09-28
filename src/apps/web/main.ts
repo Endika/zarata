@@ -44,6 +44,9 @@ let context: AudioContext | null = null;
 let monitor: MonitorNoiseUseCase | null = null;
 let startedAt = 0;
 
+const SCREEN_MAY_SLEEP =
+  'The screen may turn off while you measure: this browser would not keep it on.';
+
 const settings = new LocalStorageSettings();
 const screen = new ScreenWakeLock();
 
@@ -83,6 +86,7 @@ button.addEventListener('click', () => {
   const running = monitorNow();
   if (running.isListening) {
     void running.stop();
+    problem.hidden = true;
     button.textContent = 'Start listening';
     button.dataset['listening'] = 'false';
     document.body.dataset['alarming'] = 'false';
@@ -95,6 +99,10 @@ button.addEventListener('click', () => {
       startedAt = performance.now();
       button.textContent = 'Stop';
       button.dataset['listening'] = 'true';
+      if (!running.keepsScreenOn) {
+        problem.textContent = SCREEN_MAY_SLEEP;
+        problem.hidden = false;
+      }
       showElapsed();
     },
     (error: unknown) => {

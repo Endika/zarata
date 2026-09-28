@@ -23,6 +23,7 @@ export class MonitorNoiseUseCase implements MonitorNoisePort {
   private alarm = Alarm.silent();
   private limit: Threshold;
   private listening = false;
+  private screenOn = false;
   private listeners: ((reading: Reading) => void)[] = [];
 
   constructor(
@@ -38,6 +39,10 @@ export class MonitorNoiseUseCase implements MonitorNoisePort {
 
   get isListening(): boolean {
     return this.listening;
+  }
+
+  get keepsScreenOn(): boolean {
+    return this.screenOn;
   }
 
   get threshold(): Threshold {
@@ -68,7 +73,7 @@ export class MonitorNoiseUseCase implements MonitorNoisePort {
       this.microphone.stop();
       throw error;
     }
-    await this.screen.hold();
+    this.screenOn = await this.screen.hold();
   }
 
   async stop(): Promise<void> {
@@ -76,6 +81,7 @@ export class MonitorNoiseUseCase implements MonitorNoisePort {
     this.listening = false;
     this.microphone.stop();
     this.siren.stop();
+    this.screenOn = false;
     await this.screen.release();
   }
 
