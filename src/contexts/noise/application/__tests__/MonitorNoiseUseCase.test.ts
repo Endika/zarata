@@ -41,8 +41,10 @@ class FakeSiren {
 
 class FakeScreen {
   held = false;
-  async hold(): Promise<void> {
-    this.held = true;
+  refused = false;
+  async hold(): Promise<boolean> {
+    this.held = !this.refused;
+    return this.held;
   }
   async release(): Promise<void> {
     this.held = false;
@@ -187,5 +189,25 @@ describe('MonitorNoiseUseCase', () => {
 
     expect(monitor.isListening).toBe(true);
     expect(microphone.open).toBe(true);
+  });
+
+  it('says when the screen will stay on while it listens', async () => {
+    await monitor.start();
+
+    expect(monitor.keepsScreenOn).toBe(true);
+
+    await monitor.stop();
+    expect(monitor.keepsScreenOn).toBe(false);
+  });
+
+  it('keeps listening when the screen cannot be kept on, and says so', async () => {
+    screen.refused = true;
+
+    await monitor.start();
+    microphone.hear(0.5);
+
+    expect(monitor.isListening).toBe(true);
+    expect(monitor.keepsScreenOn).toBe(false);
+    expect(seen).toHaveLength(1);
   });
 });

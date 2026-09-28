@@ -16,5 +16,6 @@ export interface MonitorNoisePort {
   setThreshold(threshold: Threshold): void;
   onReading(listener: (reading: Reading) => void): void;
   readonly isListening: boolean;
+  readonly keepsScreenOn: boolean;
   readonly threshold: Threshold;
 }
