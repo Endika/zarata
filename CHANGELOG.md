@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.2](https://github.com/Endika/zarata/compare/v0.6.1...v0.6.2) (2026-09-28)
+
+
+### Bug Fixes
+
+* say when the screen may turn off while listening ([c5f6a81](https://github.com/Endika/zarata/commit/c5f6a81e746e3956f7c9c5c0e3825f602b0e1a92))
+
 ## [0.6.1](https://github.com/Endika/zarata/compare/v0.6.0...v0.6.1) (2026-09-27)
 
 
