@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.3](https://github.com/Endika/zarata/compare/v0.6.2...v0.6.3) (2026-09-28)
+
+
+### Bug Fixes
+
+* keep the wake lock state true to what the browser holds ([3773e27](https://github.com/Endika/zarata/commit/3773e2795c4c0d0f73a793a9903ba693a966fa9d))
+
 ## [0.6.2](https://github.com/Endika/zarata/compare/v0.6.1...v0.6.2) (2026-09-28)
 
 
