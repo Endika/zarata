@@ -9,6 +9,7 @@ import type { ScreenLockPort } from '../domain/ports/out/ScreenLockPort';
  */
 export class ScreenWakeLock implements ScreenLockPort {
   private sentinel: WakeLockSentinel | null = null;
+  private pending: Promise<void> | null = null;
   private wanted = false;
 
   constructor() {
@@ -27,19 +28,38 @@ export class ScreenWakeLock implements ScreenLockPort {
 
   async release(): Promise<void> {
     this.wanted = false;
-    await this.sentinel?.release();
+    const sentinel = this.sentinel;
     this.sentinel = null;
+    await sentinel?.release();
   }
 
-  private async request(): Promise<void> {
+  private request(): Promise<void> {
+    if (this.isHeld) return Promise.resolve();
+    this.pending ??= this.acquire().finally(() => {
+      this.pending = null;
+    });
+    return this.pending;
+  }
+
+  private async acquire(): Promise<void> {
     if (!('wakeLock' in navigator)) return;
+    let sentinel: WakeLockSentinel;
     try {
-      this.sentinel = await navigator.wakeLock.request('screen');
+      sentinel = await navigator.wakeLock.request('screen');
     } catch {
       // Denied by the browser — low battery, or a policy. The meter still works; the
       // screen will simply dim as it normally would, and hold() tells the UI so.
-      this.sentinel = null;
+      return;
     }
+    // release() was called while the browser was still granting it.
+    if (!this.wanted) {
+      void sentinel.release();
+      return;
+    }
+    sentinel.addEventListener('release', () => {
+      if (this.sentinel === sentinel) this.sentinel = null;
+    });
+    this.sentinel = sentinel;
   }
 
   get isHeld(): boolean {
