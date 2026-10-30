@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.4](https://github.com/Endika/zarata/compare/v0.6.3...v0.6.4) (2026-10-30)
+
+
+### Bug Fixes
+
+* **deps:** bump serialize-javascript to 7.1.3 ([1af8bda](https://github.com/Endika/zarata/commit/1af8bda8c9fbba9e96a7f5da7feb3874d22b4666))
+
 ## [0.6.3](https://github.com/Endika/zarata/compare/v0.6.2...v0.6.3) (2026-09-28)
 
 
