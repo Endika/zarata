@@ -6,7 +6,7 @@
   "description": "A sound level meter for your phone: watch the noise, set a limit, get a beep when it is crossed.",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && node scripts/check-precache.mjs",
     "preview": "vite preview",
     "type:check": "tsc --noEmit",
     "lint": "eslint . --max-warnings 0",
@@ -37,6 +37,9 @@
     "vitest": "^5.1.1"
   },
   "overrides": {
-    "minimatch": "^11.0.1"
+    "minimatch": "^11.0.1",
+    "workbox-build": {
+      "glob": "^13.0.0"
+    }
   }
 }
