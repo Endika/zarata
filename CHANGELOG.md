@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.5](https://github.com/Endika/zarata/compare/v0.6.4...v0.6.5) (2026-11-23)
+
+
+### Bug Fixes
+
+* **pwa:** precache the app again so installed apps update ([04382a7](https://github.com/Endika/zarata/commit/04382a7c2979b3edb1102b3530122aeeb7d6b906))
+
 ## [0.6.4](https://github.com/Endika/zarata/compare/v0.6.3...v0.6.4) (2026-10-30)
 
 
